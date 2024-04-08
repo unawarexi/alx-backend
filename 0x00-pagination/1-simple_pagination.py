@@ -5,10 +5,10 @@
 '''
 
 import csv
-import math
 from typing import List
 
-index_range = __import__('0-simple_helper_function').index_range
+# Assuming index_range is implemented correctly in 0-simple_helper_function
+from 0-simple_helper_function import index_range
 
 
 class Server:
@@ -20,7 +20,7 @@ class Server:
         ''' Initialize instance. '''
         self.__dataset = None
 
-    def dataset(self) -> List[List]:
+    def dataset(self) -> List[List[str]]:
         """Cached dataset
         """
         if self.__dataset is None:
@@ -31,7 +31,7 @@ class Server:
 
         return self.__dataset
 
-    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List[str]]:
         ''' Output page of dataset. ''' 
         assert isinstance(page, int) and isinstance(page_size, int)
         assert page > 0 and page_size > 0
@@ -44,3 +44,4 @@ class Server:
             return self.dataset()[start:end]
         except IndexError:
             return []
+
